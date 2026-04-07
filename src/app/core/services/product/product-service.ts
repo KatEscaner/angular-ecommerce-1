@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { environment } from '../../../../environments/environment';
+import { GLOBAL_CONSTANTS } from '../../constants/global.constants';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +9,7 @@ import { inject, Injectable } from '@angular/core';
 export class ProductService {
   http = inject(HttpClient);
 
-  apiUrl: string = 'https://api.freeprojectapi.com/api/Ecommerce/';
-
   getAllProducts() {
-    return this.http.get( `${this.apiUrl}get-products` );
+    return this.http.get( `${environment.API_URL}${GLOBAL_CONSTANTS.API_END_POINTS.PRODUCT.GET_PRODUCTS}` );
   }
 }
